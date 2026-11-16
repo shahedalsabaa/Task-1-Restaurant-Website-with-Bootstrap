@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cuisine - Fine Dining Restaurant</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            padding-top: 56px; /* تعويض ارتفاع شريط التنقل الثابت */
+            scroll-behavior: smooth;
+        }
+        .carousel-item img {
+            height: 85vh;
+            object-fit: cover;
+            filter: brightness(0.65);
+        }
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TODO 1: Responsive Navbar with Hamburger -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-egg-fried me-2 text-warning"></i>La Cuisine
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn btn-warning btn-sm fw-semibold" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                            Reserve a Table
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- TODO 2: Hero Carousel -->
+    <header id="home">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80" class="d-block w-100" alt="Fine Dining Dish">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-4 fw-bold">Welcome to La Cuisine</h1>
+                        <p class="lead">Experience the art of fine dining with exquisite flavors crafted by our master chefs.</p>
+                        <a href="#menu" class="btn btn-warning btn-lg mt-2">Explore Menu</a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=80" class="d-block w-100" alt="Grilled Steak">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="display-4 fw-bold">Fresh & Local Ingredients</h2>
+                        <p class="lead">Sourced daily from organic farms to bring authentic taste to your plate.</p>
+                        <button class="btn btn-outline-light btn-lg mt-2" data-bs-toggle="modal" data-bs-target="#reservationModal">Book Your Table</button>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80" class="d-block w-100" alt="Restaurant Ambiance">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="display-4 fw-bold">Unforgettable Atmosphere</h2>
+                        <p class="lead">Perfect for romantic dinners, family celebrations, and private events.</p>
+                        <a href="#about" class="btn btn-warning btn-lg mt-2">Our Story</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- TODO 3: Menu Section with Responsive Cards -->
+    <section id="menu" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Menu</h2>
+                <p class="text-muted">Discover our chef's finest creations</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Card 1: Mediterranean Salad -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Mediterranean Salad">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Mediterranean Salad</h5>
+                            <p class="card-text text-muted flex-grow-1">Fresh greens, feta cheese, olives, and sun-dried tomatoes with balsamic dressing.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="fs-5 fw-bold text-success">$12.99</span>
+                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#reservationModal">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Margherita Pizza -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Margherita Pizza">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Margherita Pizza</h5>
+                            <p class="card-text text-muted flex-grow-1">Classic Italian pizza with fresh mozzarella, basil, and our signature tomato sauce.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="fs-5 fw-bold text-success">$16.99</span>
+                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#reservationModal">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Grilled Ribeye Steak -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Grilled Ribeye Steak">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Grilled Ribeye Steak</h5>
+                            <p class="card-text text-muted flex-grow-1">Premium aged beef, grilled to perfection with roasted vegetables and herb butter.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="fs-5 fw-bold text-success">$34.99</span>
+                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#reservationModal">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Truffle Pasta -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Truffle Pasta">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Truffle Pasta</h5>
+                            <p class="card-text text-muted flex-grow-1">Handmade fettuccine with black truffle cream sauce and parmesan shavings.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="fs-5 fw-bold text-success">$22.99</span>
+                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#reservationModal">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Pan-Seared Salmon -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Pan-Seared Salmon">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Pan-Seared Salmon</h5>
+                            <p class="card-text text-muted flex-grow-1">Atlantic salmon with lemon dill sauce, asparagus, and quinoa pilaf.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="fs-5 fw-bold text-success">$28.99</span>
+                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#reservationModal">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Chocolate Lava Cake -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Chocolate Lava Cake">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Chocolate Lava Cake</h5>
+                            <p class="card-text text-muted flex-grow-1">Warm dark chocolate cake with molten center, served with vanilla bean ice cream.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="fs-5 fw-bold text-success">$10.99</span>
+                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#reservationModal">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TODO 4: About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80" 
+                         class="img-fluid rounded shadow" alt="Chef Preparing Food">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="fw-bold mb-3">Our Story</h2>
+                    <p class="text-muted">
+                        Founded in 2015, La Cuisine has been serving exquisite dishes that blend traditional flavors with modern culinary techniques. Our head chef, with over 20 years of experience, creates each dish as a work of art.
+                    </p>
+                    <p class="text-muted">
+                        We source only the freshest, locally-grown ingredients and are committed to sustainable dining practices. Every meal at La Cuisine is an experience to remember.
+                    </p>
+                    <div class="row mt-4">
+                        <div class="col-6 mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>Fresh local ingredients
+                        </div>
+                        <div class="col-6 mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>Award-winning chef
+                        </div>
+                        <div class="col-6 mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>Cozy atmosphere
+                        </div>
+                        <div class="col-6 mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>Private dining available
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section for Reservation -->
+    <section class="py-5 bg-dark text-white text-center">
+        <div class="container">
+            <h2 class="fw-bold">Make a Reservation</h2>
+            <p class="lead text-light mb-4">Book your table for an unforgettable dining experience</p>
+            <button type="button" class="btn btn-warning btn-lg px-4 fw-semibold" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                <i class="bi bi-calendar-check me-2"></i>Reserve a Table
+            </button>
+        </div>
+    </section>
+
+    <!-- TODO 5: Reservation Modal + Form -->
+    <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="reservationModalLabel">Reserve a Table at La Cuisine</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="reservationForm" onsubmit="event.preventDefault(); alert('Reservation confirmed! We look forward to serving you.'); bootstrap.Modal.getInstance(document.getElementById('reservationModal')).hide();">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="guestName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="guestName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="guestEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="guestEmail" placeholder="name@example.com" required>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-6">
+                                <label for="resDate" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="resDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="resTime" class="form-label">Time</label>
+                                <input type="time" class="form-control" id="resTime" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="guestCount" class="form-label">Number of Guests</label>
+                            <select class="form-select" id="guestCount" required>
+                                <option value="" selected disabled>Choose guests...</option>
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="4">4 People</option>
+                                <option value="6">6 People</option>
+                                <option value="8+">8+ People (Private Dining)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="specialRequests" class="form-label">Special Requests (Optional)</label>
+                            <textarea class="form-control" id="specialRequests" rows="2" placeholder="Allergies, seating preference, special occasion..."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-warning fw-semibold">Confirm Reservation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- TODO 6: Footer with 3 Responsive Columns -->
+    <footer id="contact" class="bg-dark text-light pt-5 pb-3 border-top border-secondary">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Column 1: Location & Contact -->
+                <div class="col-md-4">
+                    <h5 class="fw-bold text-warning mb-3">Location & Contact</h5>
+                    <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>123 Culinary Avenue, Gourmet City, NY 10012</p>
+                    <p class="mb-1"><i class="bi bi-telephone-fill me-2 text-warning"></i>+1 (555) 234-5678</p>
+                    <p class="mb-0"><i class="bi bi-envelope-fill me-2 text-warning"></i>info@lacuisine.com</p>
+                </div>
+
+                <!-- Column 2: Opening Hours -->
+                <div class="col-md-4">
+                    <h5 class="fw-bold text-warning mb-3">Opening Hours</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-1">Monday – Thursday: 11:00 AM – 10:00 PM</li>
+                        <li class="mb-1">Friday – Saturday: 11:00 AM – 11:30 PM</li>
+                        <li>Sunday: 12:00 PM – 9:30 PM</li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Follow Us -->
+                <div class="col-md-4">
+                    <h5 class="fw-bold text-warning mb-3">Follow Us</h5>
+                    <p class="small text-muted">Stay connected for seasonal menus and special events.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light text-decoration-none"><i class="bi bi-facebook me-1"></i>Facebook</a>
+                        <a href="#" class="text-light text-decoration-none"><i class="bi bi-instagram me-1"></i>Instagram</a>
+                        <a href="#" class="text-light text-decoration-none"><i class="bi bi-twitter-x me-1"></i>Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="text-center small text-muted">
+                &copy; 2026 La Cuisine. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
